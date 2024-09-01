@@ -1,0 +1,5 @@
+kafka:
+  topic:
+    name: nome-do-topico
+  consumer:
+    group: nome-do-grupo
