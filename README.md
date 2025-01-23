@@ -1,19 +1,31 @@
-# Kafka for Devs (Biblioteca)
+# Twiit - Plataforma pessoal
 
-## Descrição
+> Twiit é um desenvolvimento pessoal de como funcionaria o back-end de uma aplicação de mídia social como o Instagram e o Facebook por exemplo. O projeto conta com escopos de segurança e autenticação utilizando geração de tokens
+através do JWT e do OAuth2, suas funcionalidades são as necessárias para que este fluxo funcione corretamente. A aplicação tem as principais funcionalidades:
+> - Um usuário administrador pode criar outros usuários;
+> - Um usuário pode efetuar um login e assim terá um token de autenticação;
+> - Todos os usuários logados consegue gerar tweets (Verificacao através do token quando efetuado o login);
+> - Todos os usuários logados conseguem ver todos os tweets criados (com paginação)
+> - Somente o usuário quem criou o seu tweet, pode deletá-lo;
+> - Um usuário Administrador pode criar outros usuários Administradores;
+> - Um usuário básico não pode criar usuários;
 
-No decorrer dos meus projetos com micro-serviços, encontrava códigos que não agradavam visualmente quando era feita a configuração do kafka. Para remediar este problema, criei uma biblioteca que faria o trabalho da configuração automaticamente.
-Como que esta lib trabalharia? Ela pega as propriedades da conexão diretamente dos seus arquivos de aplicação, então dados como o nome do consumidor e o tópico inferido, ela consegue captar diretamente dos arquivos yaml. 
-Por qual razão usá-la, ao invés das configurações padrões do Kafka? Não seria mais necessário criar classes específicas para os consumidores e os produtores de mensagem, agora, tudo estaria encapsulado em um único método, deixando o código bem mais limpo e compactado. Além de, usar SLF4J enjessado nos métodos, deixando o tracing de erro já encapsulado sem a necessidade de configuração adicional. Está em fase de desenvolvimento este processo, mas, também trabalhariamos com conversões padronizadas de valores no mercado, esperando um body T na entrada do método que será convertido em um JSON e enviado ao tópico.
-Alguns modelos específicos de conversão (como Protocol Buffers) ainda não estão disponíveis nessa Release.
-Introduzi um modelo de JAVADOC dentro dos métodos, então o CONTROL + Q deve ajudar a tirar dúvidas referente a como os métodos se comportam.
 
-## Tecnologias Utilizadas
+## 💻 Pré-requisitos
 
-As tecnologias deste projeto, são:
+Caso deseje instalar o projeto para verificar, fique a vontade! Antes de começar, é necessário que os seguintes passos estejam configurados:
 
-- *Java* (versão 21)
-- *Apache Maven* (versão 4.0.0)
-- *Spring Framework* (versão 3.3.3)
-- *Apache Kafka* (versão mais recente)
-- *Lombok* (versão mais recente)
+- Java 21 ou superior instalado no ambiente;
+- Maven instalado e apontado nas variáveis de ambiente;
+- Geração da chave pública e privada através do OpenSSL (O projeto conta com uma chave pública e privada default, mas é de extrema necessidade que seja gerada uma referente ao seu ambiente);
+
+
+## 🚀 Sobre o projeto
+
+O projeto ainda está em desenvolvimento, não possuindo um frontend integrado com a aplicação, tendo que suas requisições sejam acessadas diretamente aos endpoints. Este projeto foi inicialmente criado para testar as habilidades em JWT e OAuth, alternativas de segurança na qual venho interagindo com elas a algum tempo. O projeto foi desenvolvido com Java 21, Spring como framework, JWT e OAuth como tecnologias de segurança de usuário, e, JPA e MySql como mapeamento de objetos e banco de dados. Foi desenvolvido alguns passos com o SSL para geração da chave pública e privada necessárias ao JWT, mas que fogem do escopo deste projeto. 
+
+
+## :coffee: Contratos da API
+O projeto conta com as funcionalidades detalhadas em seu descritivo e as suas necessidades antes do deploy em sua máquina pessoal já mencionadas. Com estes 2 pontos configurados, já é possível subir o projeto e realizar um teste com sua integração verificando os constratos passados no swagger.yaml.
+
+Em caso de dúvida ou alterações, estou a disposição. Abraços! 👋
