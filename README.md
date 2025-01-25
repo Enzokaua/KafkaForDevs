@@ -1,31 +1,58 @@
-# Twiit - Plataforma pessoal
+# lib-kafkaDevs - Biblioteca para Integração com Apache Kafka
 
-> Twiit é um desenvolvimento pessoal de como funcionaria o back-end de uma aplicação de mídia social como o Instagram e o Facebook por exemplo. O projeto conta com escopos de segurança e autenticação utilizando geração de tokens
-através do JWT e do OAuth2, suas funcionalidades são as necessárias para que este fluxo funcione corretamente. A aplicação tem as principais funcionalidades:
-> - Um usuário administrador pode criar outros usuários;
-> - Um usuário pode efetuar um login e assim terá um token de autenticação;
-> - Todos os usuários logados consegue gerar tweets (Verificacao através do token quando efetuado o login);
-> - Todos os usuários logados conseguem ver todos os tweets criados (com paginação)
-> - Somente o usuário quem criou o seu tweet, pode deletá-lo;
-> - Um usuário Administrador pode criar outros usuários Administradores;
-> - Um usuário básico não pode criar usuários;
+> A **lib-kafkaDevs** é uma biblioteca desenvolvida para simplificar a configuração e o uso do **Apache Kafka** e **Zookeeper**, fornecendo métodos prontos para envio e consumo de mensagens em tópicos. A biblioteca utiliza **Spring Framework (versão 3.3.3)** e **SLF4J** para registro de logs, garantindo uma implementação limpa e de fácil manutenção.
+> Essa biblioteca foi projetada seguindo os princípios de **Clean Code**, com métodos reutilizáveis e configuráveis via arquivos `.properties`. A ideia é oferecer uma solução padronizada e funcional para desenvolvedores que desejam integrar seus sistemas ao Kafka de forma rápida e eficiente.
+
+## Principais Dependências
+- Spring Framework 3.3.3: Para configuração de listeners e producers.
+- SLF4J: Para registro de logs de mensagens e operações.
+- Configurações dinâmicas via arquivos .properties, como:
+- kafka.topic.name: Nome do tópico Kafka.
+- kafka.consumer.group: Nome do grupo do consumidor.
+
+A biblioteca fornece os seguintes métodos principais:
+
+### 💻 Pré-requisitos
+
+Antes de integrar a biblioteca ao seu projeto, certifique-se de ter configurado o ambiente corretamente:
+```properties
+kafka.topic.name=seu-topico
+kafka.consumer.group=seu-grupo
+spring.kafka.bootstrap-servers=localhost:9092
+```
+
+### 🚀 Sobre a biblioteca
+
+O objetivo da lib-kafkaDevs é abstrair a complexidade da configuração de Kafka, oferecendo métodos prontos para consumo e envio de mensagens. A biblioteca inclui logs detalhados para monitoramento e depuração, e foi projetada para ser facilmente extensível.
+Se você deseja otimizar o consumo e produção de mensagens no Kafka com foco em boas práticas de desenvolvimento, essa biblioteca é uma excelente opção.
 
 
-## 💻 Pré-requisitos
+### :coffee: Como Usar
 
-Caso deseje instalar o projeto para verificar, fique a vontade! Antes de começar, é necessário que os seguintes passos estejam configurados:
+1- Adicione a biblioteca ao seu projeto:
+Caso esteja em um repositório Maven, adicione a dependência no pom.xml:
+```xml
+<dependency>
+    <groupId>com.enzo.kafka</groupId>
+    <artifactId>lib-kafkaDevs</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+2- Configure seu arquivo .properties: Certifique-se de fornecer os valores corretos para os tópicos e servidores Kafka.
 
-- Java 21 ou superior instalado no ambiente;
-- Maven instalado e apontado nas variáveis de ambiente;
-- Geração da chave pública e privada através do OpenSSL (O projeto conta com uma chave pública e privada default, mas é de extrema necessidade que seja gerada uma referente ao seu ambiente);
+3- Utilize os métodos prontos:
+
+```java
+/**
+ * Para consumir mensagens
+ */
+consumerMessage(record);
 
 
-## 🚀 Sobre o projeto
+/**
+ * Para produzir mensagens
+ */
+sendMessage("nome-do-topico", "sua-mensagem");
+```
 
-O projeto ainda está em desenvolvimento, não possuindo um frontend integrado com a aplicação, tendo que suas requisições sejam acessadas diretamente aos endpoints. Este projeto foi inicialmente criado para testar as habilidades em JWT e OAuth, alternativas de segurança na qual venho interagindo com elas a algum tempo. O projeto foi desenvolvido com Java 21, Spring como framework, JWT e OAuth como tecnologias de segurança de usuário, e, JPA e MySql como mapeamento de objetos e banco de dados. Foi desenvolvido alguns passos com o SSL para geração da chave pública e privada necessárias ao JWT, mas que fogem do escopo deste projeto. 
-
-
-## :coffee: Contratos da API
-O projeto conta com as funcionalidades detalhadas em seu descritivo e as suas necessidades antes do deploy em sua máquina pessoal já mencionadas. Com estes 2 pontos configurados, já é possível subir o projeto e realizar um teste com sua integração verificando os constratos passados no swagger.yaml.
-
-Em caso de dúvida ou alterações, estou a disposição. Abraços! 👋
+Se você tiver dúvidas ou sugestões, sinta-se à vontade para entrar em contato. Boas integrações! 🚀
